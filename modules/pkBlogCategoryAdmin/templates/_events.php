@@ -1,0 +1,1 @@
+<?php echo link_to(count($pk_blog_category->getEvents()), 'pk_blog_event_admin_collection', array('action' => 'filter'), array('query_string' => 'filter=filter&pk_blog_event_admin_filters%5Bcategory_id%5D='.$pk_blog_category->getId(), 'method' => 'event')) ?>

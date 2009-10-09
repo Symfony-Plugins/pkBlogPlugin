@@ -1,0 +1,1 @@
+<?php echo link_to('Edit Events', '@pk_blog_event_admin', array('class' => 'pk-btn icon pk-blog', )) ?>

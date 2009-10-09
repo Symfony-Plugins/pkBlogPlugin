@@ -1,0 +1,50 @@
+generator:
+  class: sfDoctrineGenerator
+  param:
+    model_class:           pkBlogEvent
+    theme:                 pkAdmin
+    non_verbose_templates: true
+    with_show:             false
+    singular:              ~
+    plural:                ~
+    route_prefix:          pk_blog_event_admin
+    with_doctrine_route:     1
+
+    config:
+      actions: 
+        _new:
+          label: Create New Event
+      fields:  ~
+      list:
+        title: Events
+        display: [_event, author, _tags, _media]
+        object_actions:
+          _edit:      ~
+          media:
+            label:  Manage media
+            action: media
+            params: class=pk-btn icon icon-only pk-media
+          _delete:    ~
+        batch_actions:
+          _delete:    ~
+          publish:
+            label:    Publish/Unpublish
+      filter:  ~
+      form:
+        display: [author_id, start_date, end_date, title, body, excerpt, category_id, tags, published, published_at]
+      edit:
+        title: Editing Event "%%title%%"
+        actions:
+          _save:      ~
+          publish:
+            label:    Publish/Unpublish
+            action:   publish
+            params:   class=pk-btn icon pk-publish
+          _list:      ~
+          _delete:    ~
+      new:
+        title: New Event
+        actions:
+          _save:      ~
+          _list:      ~
+          _delete:    ~

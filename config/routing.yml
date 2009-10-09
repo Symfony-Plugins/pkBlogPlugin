@@ -1,0 +1,146 @@
+pk_blog_post:
+  url:     /:year/:month/:day/:slug
+  param:   { module: pkBlog, action: show }
+  options: { model: pkBlog, type: object }
+  requirements: { year: '\d{4}', month: '\d|\d{2}', day: '\d|\d{2}' }
+  class:   pkContextCMSDoctrineRoute
+
+pk_blog_cat_tag_year_month_day:
+  url:   /:cat/tag/:tag/:year/:month/:day
+  param: { module: pkBlog, action: index }
+  requirements: { year: '\d{4}', month: '\d|\d{2}', day: '\d|\d{2}' }
+  class: pkContextCMSRoute
+
+pk_blog_cat_tag_year_month:
+  url:   /:cat/tag/:tag/:year/:month
+  param: { module: pkBlog, action: index }
+  requirements: { year: '\d{4}', month: '\d|\d{2}' }
+  class: pkContextCMSRoute
+
+pk_blog_cat_tag_year:
+  url:   /:cat/tag/:tag/:year
+  param: { module: pkBlog, action: index }
+  requirements: { year: '\d{4}' }
+  class: pkContextCMSRoute
+
+pk_blog_tag_year_month_day:
+  url:   /tag/:tag/:year/:month/:day
+  param: { module: pkBlog, action: index }
+  requirements: { year: '\d{4}', month: '\d|\d{2}', day: '\d|\d{2}' }
+  class: pkContextCMSRoute
+
+pk_blog_tag_year_month:
+  url:   /tag/:tag/:year/:month
+  param: { module: pkBlog, action: index }
+  requirements: { year: '\d{4}', month: '\d|\d{2}' }
+  class: pkContextCMSRoute
+
+pk_blog_tag_year:
+  url:   /tag/:tag/:year
+  param: { module: pkBlog, action: index }
+  requirements: { year: '\d{4}' }
+  class: pkContextCMSRoute
+
+pk_blog_cat_year_month_day:
+  url:   /:cat/:year/:month/:day
+  param: { module: pkBlog, action: index }
+  requirements: { year: '\d{4}', month: '\d|\d{2}', day: '\d|\d{2}' }
+  class: pkContextCMSRoute
+
+pk_blog_cat_year_month:
+  url:   /:cat/:year/:month
+  param: { module: pkBlog, action: index }
+  requirements: { year: '\d{4}', month: '\d|\d{2}' }
+  class: pkContextCMSRoute
+
+pk_blog_cat_year:
+  url:   /:cat/:year
+  param: { module: pkBlog, action: index }
+  requirements: { year: '\d{4}' }
+  class: pkContextCMSRoute
+  
+pk_blog_year_month_day:
+  url:   /:year/:month/:day
+  param: { module: pkBlog, action: index }
+  requirements: { year: '\d{4}', month: '\d|\d{2}', day: '\d|\d{2}' }
+  class: pkContextCMSRoute
+
+pk_blog_year_month:
+  url:   /:year/:month
+  param: { module: pkBlog, action: index }
+  requirements: { year: '\d{4}', month: '\d|\d{2}' }
+  class: pkContextCMSRoute
+
+pk_blog_year:
+  url:   /:year
+  param: { module: pkBlog, action: index }
+  requirements: { year: '\d{4}' }
+  class: pkContextCMSRoute
+
+pk_blog_cat_tag:
+  url:   /:cat/tag/:tag
+  param: { module: pkBlog, action: index }
+  class: pkContextCMSRoute
+
+pk_blog_tag:
+  url:   /tag/:tag
+  param: { module: pkBlog, action: index }
+  class: pkContextCMSRoute
+
+pk_blog_cat:
+  url:   /:cat
+  param: { module: pkBlog, action: index }
+  class: pkContextCMSRoute
+
+pk_blog:
+  url:   
+  param: { module: pkBlog, action: index }
+  class: pkContextCMSRoute
+
+pk_blog_today:
+  url:   
+  param: { module: pkBlog, action: today }
+  class: pkContextCMSRoute
+
+pk_blog_feed_cat_tag:
+  url:   /blog/feed/:cat/tag/:tag
+  param: { module: pkBlogFeed, action: posts }
+
+pk_blog_feed_tag:
+  url:   /blog/feed/tag/:tag
+  param: { module: pkBlogFeed, action: posts }
+
+pk_blog_feed_cat:
+  url:   /blog/feed/:cat
+  param: { module: pkBlogFeed, action: posts }
+
+pk_blog_feed:
+  url:   /blog/feed
+  param: { module: pkBlogFeed, action: posts }
+
+pk_blog_post_admin:
+  class: sfDoctrineRouteCollection
+  options:
+    model:               pkBlogPost
+    module:              pkBlogPostAdmin
+    prefix_path:         pk_blog_post_admin
+    column:              id
+    with_wildcard_routes: true
+
+pk_blog_event_admin:
+  class: sfDoctrineRouteCollection
+  options:
+    model:               pkBlogEvent
+    module:              pkBlogEventAdmin
+    prefix_path:         pk_blog_event_admin
+    column:              id
+    with_wildcard_routes: true
+
+pk_blog_category_admin:
+  class: sfDoctrineRouteCollection
+  options:
+    model:               pkBlogCategory
+    module:              pkBlogCategoryAdmin
+    prefix_path:         pk_blog_category_admin
+    column:              id
+    with_wildcard_routes: true

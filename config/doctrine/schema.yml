@@ -1,0 +1,131 @@
+pkBlogItem:
+  actAs:
+    Timestampable: ~
+    Taggable: ~
+    Sluggable: ~
+    Versionable:
+      versionColumn: version
+      className: %CLASS%Version
+      auditLog: true
+      deleteVersions: true
+  columns:
+    id:
+      type: integer(4)
+      primary: true
+      autoincrement: true
+    type:
+      type: enum
+      values: [post, event]
+      notnull: true
+    author_id:
+      type: integer(4)
+    category_id:
+      type: integer(4)
+    title:
+      type: string(255)
+      notnull: true
+    excerpt:
+      type: string
+    body:
+      type: clob
+    published:
+      type: boolean
+      notnull: true
+      default: 0
+    published_at:
+      type: timestamp
+    media:
+      type: string
+  relations:
+    Author:
+      class: sfGuardUser
+      local: author_id
+      foreign: id
+      onDelete: SET NULL
+      foreignAlias: pkBlogItems
+    Category:
+      class: pkBlogCategory
+      local: category_id
+      foreign: id
+      onDelete: SET NULL
+      foreignAlias: Items
+
+pkBlogPost:
+  inheritance:
+    extends: pkBlogItem
+    type: column_aggregation
+    keyField: type
+    keyValue: 'post'
+  relations:
+    Author:
+      class: sfGuardUser
+      local: author_id
+      foreign: id
+      onDelete: SET NULL
+      foreignAlias: pkBlogPosts
+    Category:
+      class: pkBlogCategory
+      local: category_id
+      foreign: id
+      onDelete: SET NULL
+      foreignAlias: Posts
+
+pkBlogEvent:
+  inheritance:
+    extends: pkBlogItem
+    type: column_aggregation
+    keyField: type
+    keyValue: 'event'
+  columns:
+    start_date:
+      type: timestamp
+    end_date:
+      type: timestamp
+  relations:
+    Author:
+      class: sfGuardUser
+      local: author_id
+      foreign: id
+      onDelete: SET NULL
+      foreignAlias: pkBlogEvents
+    Category:
+      class: pkBlogCategory
+      local: category_id
+      foreign: id
+      onDelete: SET NULL
+      foreignAlias: Events
+
+pkBlogCategory:
+  actAs:
+    Timestampable: ~
+    Sluggable: ~
+  columns:
+    id:
+      type: integer(4)
+      primary: true
+      autoincrement: true
+    name:
+      type: string(255)
+    description:
+      type: string
+
+pkContextCMSBlogPostSlot:
+  inheritance:
+    extends: pkContextCMSSlot
+    type: column_aggregation
+    keyField: type
+    keyValue: 'pkContextCMSBlogPost'
+
+pkContextCMSBlogSlot:
+  inheritance:
+    extends: pkContextCMSSlot
+    type: column_aggregation
+    keyField: type
+    keyValue: 'pkContextCMSBlog'
+
+pkContextCMSCalendarSlot:
+  inheritance:
+    extends: pkContextCMSSlot
+    type: column_aggregation
+    keyField: type
+    keyValue: 'pkContextCMSCalendar'

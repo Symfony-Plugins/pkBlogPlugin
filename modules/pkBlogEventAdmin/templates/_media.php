@@ -1,0 +1,1 @@
+<?php echo count($pk_blog_event->getAttachedMediaIds()) ?>
