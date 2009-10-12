@@ -1,3 +1,7 @@
+#################
+# pkBlog routes #
+#################
+
 pk_blog_post:
   url:     /:year/:month/:day/:slug
   param:   { module: pkBlog, action: show }
@@ -117,6 +121,118 @@ pk_blog_feed_cat:
 pk_blog_feed:
   url:   /blog/feed
   param: { module: pkBlogFeed, action: posts }
+
+#####################
+# pkCalendar routes #
+#####################
+
+pk_calendar_post:
+  url:     /:year/:month/:day/:slug
+  param:   { module: pkCalendar, action: show }
+  options: { model: pkCalendar, type: object }
+  requirements: { year: '\d{4}', month: '\d|\d{2}', day: '\d|\d{2}' }
+  class:   pkContextCMSDoctrineRoute
+
+pk_calendar_cat_tag_year_month_day:
+  url:   /:cat/tag/:tag/:year/:month/:day
+  param: { module: pkCalendar, action: index }
+  requirements: { year: '\d{4}', month: '\d|\d{2}', day: '\d|\d{2}' }
+  class: pkContextCMSRoute
+
+pk_calendar_cat_tag_year_month:
+  url:   /:cat/tag/:tag/:year/:month
+  param: { module: pkCalendar, action: index }
+  requirements: { year: '\d{4}', month: '\d|\d{2}' }
+  class: pkContextCMSRoute
+
+pk_calendar_cat_tag_year:
+  url:   /:cat/tag/:tag/:year
+  param: { module: pkCalendar, action: index }
+  requirements: { year: '\d{4}' }
+  class: pkContextCMSRoute
+
+pk_calendar_tag_year_month_day:
+  url:   /tag/:tag/:year/:month/:day
+  param: { module: pkCalendar, action: index }
+  requirements: { year: '\d{4}', month: '\d|\d{2}', day: '\d|\d{2}' }
+  class: pkContextCMSRoute
+
+pk_calendar_tag_year_month:
+  url:   /tag/:tag/:year/:month
+  param: { module: pkCalendar, action: index }
+  requirements: { year: '\d{4}', month: '\d|\d{2}' }
+  class: pkContextCMSRoute
+
+pk_calendar_tag_year:
+  url:   /tag/:tag/:year
+  param: { module: pkCalendar, action: index }
+  requirements: { year: '\d{4}' }
+  class: pkContextCMSRoute
+
+pk_calendar_cat_year_month_day:
+  url:   /:cat/:year/:month/:day
+  param: { module: pkCalendar, action: index }
+  requirements: { year: '\d{4}', month: '\d|\d{2}', day: '\d|\d{2}' }
+  class: pkContextCMSRoute
+
+pk_calendar_cat_year_month:
+  url:   /:cat/:year/:month
+  param: { module: pkCalendar, action: index }
+  requirements: { year: '\d{4}', month: '\d|\d{2}' }
+  class: pkContextCMSRoute
+
+pk_calendar_cat_year:
+  url:   /:cat/:year
+  param: { module: pkCalendar, action: index }
+  requirements: { year: '\d{4}' }
+  class: pkContextCMSRoute
+  
+pk_calendar_year_month_day:
+  url:   /:year/:month/:day
+  param: { module: pkCalendar, action: index }
+  requirements: { year: '\d{4}', month: '\d|\d{2}', day: '\d|\d{2}' }
+  class: pkContextCMSRoute
+
+pk_calendar_year_month:
+  url:   /:year/:month
+  param: { module: pkCalendar, action: index }
+  requirements: { year: '\d{4}', month: '\d|\d{2}' }
+  class: pkContextCMSRoute
+
+pk_calendar_year:
+  url:   /:year
+  param: { module: pkCalendar, action: index }
+  requirements: { year: '\d{4}' }
+  class: pkContextCMSRoute
+
+pk_calendar_cat_tag:
+  url:   /:cat/tag/:tag
+  param: { module: pkCalendar, action: index }
+  class: pkContextCMSRoute
+
+pk_calendar_tag:
+  url:   /tag/:tag
+  param: { module: pkCalendar, action: index }
+  class: pkContextCMSRoute
+
+pk_calendar_cat:
+  url:   /:cat
+  param: { module: pkCalendar, action: index }
+  class: pkContextCMSRoute
+
+pk_calendar:
+  url:   
+  param: { module: pkCalendar, action: index }
+  class: pkContextCMSRoute
+
+pk_calendar_today:
+  url:   
+  param: { module: pkCalendar, action: today }
+  class: pkContextCMSRoute
+
+################
+# admin routes #
+################
 
 pk_blog_post_admin:
   class: sfDoctrineRouteCollection
