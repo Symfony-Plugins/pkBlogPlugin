@@ -9,8 +9,10 @@
  */
 abstract class PluginpkBlogPostForm extends BasepkBlogPostForm
 {
-  public function configure()
+  public function setup()
   {
+    parent::setup();
+
     $user = sfContext::getInstance()->getUser();
     
     unset(

@@ -9,8 +9,10 @@
  */
 abstract class PluginpkBlogEventForm extends BasepkBlogEventForm
 {
-  public function configure()
+  public function setup()
   {
+    parent::setup();
+
     unset(
       $this['created_at'],
       $this['updated_at'],

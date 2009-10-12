@@ -12,7 +12,8 @@ class pkBlogPluginTools
     {
       pkContextCMSTools::addGlobalButtons(array(
         new pkContextCMSGlobalButton('Blog', 'pkBlogPostAdmin/index', 'pk-blog'),
-  			new pkContextCMSGlobalButton('Events', 'pkBlogEventAdmin/index', 'pk-events day-'.date('j'))));
+  			new pkContextCMSGlobalButton('Events', 'pkBlogEventAdmin/index', 'pk-events day-'.date('j'))
+  		));
   	}
   }
 }
