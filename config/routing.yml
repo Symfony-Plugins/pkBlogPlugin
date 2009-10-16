@@ -129,7 +129,7 @@ pk_blog_feed:
 pk_calendar_post:
   url:     /:year/:month/:day/:slug
   param:   { module: pkCalendar, action: show }
-  options: { model: pkCalendar, type: object }
+  options: { model: pkBlogEvent, type: object }
   requirements: { year: '\d{4}', month: '\d|\d{2}', day: '\d|\d{2}' }
   class:   pkContextCMSDoctrineRoute
 

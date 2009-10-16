@@ -55,11 +55,6 @@
 	
 </div>
 
-<hr />
-
-<h5><?php echo link_to('RSS Feed','@pk_blog_feed', array('class' => 'pk-rss-feed', )) ?></h5>
-
-
 <script type="text/javascript">
 $(document).ready(function() {
 	$('.pk-tag-sidebar-title.all-tags').click(function(){
