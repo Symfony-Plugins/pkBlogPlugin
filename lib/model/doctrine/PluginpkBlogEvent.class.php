@@ -5,5 +5,9 @@
  */
 abstract class PluginpkBlogEvent extends BasepkBlogEvent
 {
-
+  public function getPermalink()
+  {
+    sfContext::getInstance()->getConfiguration()->loadHelpers('Url');
+    return url_for('pk_calendar', $this, false);
+  }
 }

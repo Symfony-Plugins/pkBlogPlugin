@@ -5,11 +5,6 @@
  */
 abstract class PluginpkBlogItem extends BasepkBlogItem
 {
-  public function getPermalink()
-  {
-    sfContext::getInstance()->getConfiguration()->loadHelpers('Url');
-    return url_for('pk_blog_post', $this, false);
-  }
   
   /**
    * Used by the pkContextCMS search action.
