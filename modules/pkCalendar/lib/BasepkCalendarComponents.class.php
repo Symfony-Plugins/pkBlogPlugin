@@ -10,7 +10,20 @@
  */
 abstract class BasepkCalendarComponents extends sfComponents
 {
-  public function executeTagSidebar($request)
+  public function executeUpcomingEvents(sfWebRequest $request)
+  {
+    $limit = ($this->limit) ? $this->limit : 5;
+    
+    $q = Doctrine::getTable('pkBlogEvent')
+      ->createQuery('p')
+      ->addWhere('p.published = ?', true)
+      ->orderBy('p.start_date')
+      ->limit($limit);
+    
+    $this->pk_blog_events = $q->execute();
+  }
+
+  public function executeTagSidebar(sfWebRequest $request)
   {
     if ($this->getRequestParameter('tag'))
     {
