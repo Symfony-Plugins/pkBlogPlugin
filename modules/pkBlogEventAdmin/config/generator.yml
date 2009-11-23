@@ -31,7 +31,7 @@ generator:
             label:    Publish/Unpublish
       filter:  ~
       form:
-        display: [author_id, start_date, end_date, title, body, excerpt, category_id, tags, published, published_at]
+        display: [author_id, start_date, end_date, title, body, excerpt, category_id, tags, ~tagList, published, published_at]
       edit:
         title: Editing Event "%%title%%"
         actions:
