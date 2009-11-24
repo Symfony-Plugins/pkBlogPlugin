@@ -14,10 +14,12 @@ generator:
       actions: 
         _new:
           label: Create New Event
-      fields:  ~
+      fields:
+        start_date: { label: Start Date, date_format: MM/dd/yy }
+        end_date: { label: End Date, date_format: MM/dd/yy }
       list:
         title: Events
-        display: [_event, author, _tags, _media]
+        display: [_event, start_date, end_date, author, _tags, _media]
         object_actions:
           _edit:      ~
           media:
