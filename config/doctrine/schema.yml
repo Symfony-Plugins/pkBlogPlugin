@@ -129,3 +129,10 @@ pkContextCMSCalendarSlot:
     type: column_aggregation
     keyField: type
     keyValue: 'pkContextCMSCalendar'
+    
+pkContextCMSBlogEventSlot:
+  inheritance:
+    extends: pkContextCMSSlot
+    type: column_aggregation
+    keyField: type
+    keyValue: 'pkContextCMSBlogEvent'
