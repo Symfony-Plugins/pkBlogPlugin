@@ -1,15 +1,15 @@
 <?php
 
-require_once dirname(__FILE__).'/../lib/BasepkContextCMSBlogEventActions.class.php';
+require_once dirname(__FILE__).'/../lib/BasepkContextCMSBlogPostActions.class.php';
 
 /**
- * pkContextCMSBlogEvent actions.
+ * pkContextCMSBlogPost actions.
  * 
  * @package    pkBlogPlugin
- * @subpackage pkContextCMSBlogEvent
+ * @subpackage pkContextCMSBlogPost
  * @author     Your name here
  * @version    SVN: $Id: actions.class.php 12628 2008-11-04 14:43:36Z Kris.Wallsmith $
  */
-class pkContextCMSBlogEventActions extends BasepkContextCMSBlogEventActions
+class pkContextCMSBlogPostActions extends BasepkContextCMSBlogPostActions
 {
 }

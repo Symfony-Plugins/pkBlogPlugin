@@ -24,26 +24,26 @@
 	</li>
 <?php end_slot() ?>
 
-<?php // Look at $pk_blog_post, not $value; posts can be deleted ?>
-<?php if (!$pk_blog_post): ?>
+<?php // Look at $pk_blog_event, not $value; events can be deleted ?>
+<?php if (!$pk_blog_event): ?>
   <?php if ($editable): ?>
-    Click edit to select a post. 
+    Click edit to select a event. 
   <?php endif ?>
 <?php else: ?>
-<h4><?php echo $pk_blog_post->getTitle() ?></h4>
+<h4><?php echo $pk_blog_event->getTitle() ?></h4>
 
-<?php if ($pk_blog_post->getAttachedMedia()): ?>
+<?php if ($pk_blog_event->getAttachedMedia()): ?>
 	<?php if (in_array('pkContextCMSSlideshow', sfConfig::get('sf_enabled_modules'))): ?>
-		<div class="pk-blog-post-media">
+		<div class="pk-blog-event-media">
 			<?php include_component('pkContextCMSSlideshow', 'slideshow', array(
-				'items' => $pk_blog_post->getAttachedMedia(),
-				'id' => $pk_blog_post->getId(),
+				'items' => $pk_blog_event->getAttachedMedia(),
+				'id' => $pk_blog_event->getId(),
 				'options' => array('width' => 120, 'height' => 90, 'resizeType' => 'c', 'arrows' => false )
 			)) ?>
 		</div>
 	<?php else: ?>
-	  <ul class="pk-blog-post-media">
-	  <?php foreach ($pk_blog_post->getAttachedMedia() as $media): ?>
+	  <ul class="pk-blog-event-media">
+	  <?php foreach ($pk_blog_event->getAttachedMedia() as $media): ?>
 	    <li><?php echo image_tag(str_replace(
 	      array("_WIDTH_", "_HEIGHT_", "_c-OR-s_", "_FORMAT_"),
 	      array('120', '90', 'c', 'jpg',),
@@ -54,9 +54,9 @@
   <?php endif ?>
 <?php endif ?>
 
-<div class="pk-blog-post-excerpt-container">
-	<?php echo $pk_blog_post->getExcerpt() ?>
-	<span class="pk-blog-read-more"><?php echo link_to('Read More', 'pk_blog_post', $pk_blog_post, array('class' => 'pk-blog-more')) ?></span>
+<div class="pk-blog-event-excerpt-container">
+	<?php echo $pk_blog_event->getExcerpt() ?>
+	<span class="pk-blog-read-more"><?php echo link_to('Read More', 'pk_calendar_post', $pk_blog_event, array('class' => 'pk-blog-more')) ?></span>
 </div>
 
 <?php endif ?>
