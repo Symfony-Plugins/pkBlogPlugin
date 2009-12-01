@@ -5,5 +5,5 @@
  */
 abstract class PluginpkContextCMSBlogPostSlot extends BasepkContextCMSBlogPostSlot
 {
-
+  protected $editDefault = true;
 }
