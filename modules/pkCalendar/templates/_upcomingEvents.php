@@ -12,8 +12,8 @@
 		
 			<div class="pk-calendar-event-body">
 				<h4><?php echo $pk_blog_event->getTitle() ?></h4>
-				<p><?php echo $pk_blog_event->getExcerpt() ?></p>
-				<p><?php echo link_to('Read More', 'pk_calendar_post', $pk_blog_event, array('class' => 'pk-blog-more')) ?></p>
+				<?php echo ($pk_blog_event->getExcerpt()) ? $pk_blog_event->getExcerpt() : $pk_blog_event->getPreview(75) ?>
+				<span class="pk-blog-read-more"><?php echo link_to('Read More', 'pk_calendar_post', $pk_blog_event, array('class' => 'pk-blog-more')) ?></span>
 			</div>
 		</div>
 		

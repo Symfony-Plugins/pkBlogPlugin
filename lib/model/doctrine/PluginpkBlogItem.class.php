@@ -14,6 +14,11 @@ abstract class PluginpkBlogItem extends BasepkBlogItem
     return $this->getPermalink();
   }
 
+	public function getPreview($length = 100)
+	{
+		return pkHtml::limitWords($this->getBody(), $length);
+	}
+
   /**
    * These date methods are use in the routing of the permalink
    */

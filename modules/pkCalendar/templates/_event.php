@@ -11,7 +11,10 @@
 	</ul>
   <div class="pk-blog-post-body">
 		<div class="pk-blog-post-excerpt">
-			<?php echo (isset($excerpt)) ? $pk_blog_event->getExcerpt() : $pk_blog_event->getBody() ?>			
+			<?php echo (isset($excerpt) && $pk_blog_event->getExcerpt()) ? $pk_blog_event->getExcerpt() : $pk_blog_event->getBody() ?>			
+			<?php if ((isset($excerpt) && $pk_blog_event->getExcerpt())): ?>
+				<span class="pk-blog-read-more"><?php echo link_to('Read More', 'pk_calendar_post', $pk_blog_event, array('class' => 'pk-blog-more')) ?></span>
+			<?php endif ?>
 		</div>
 		
   	<?php if ($pk_blog_event->getAttachedMedia()): ?>
