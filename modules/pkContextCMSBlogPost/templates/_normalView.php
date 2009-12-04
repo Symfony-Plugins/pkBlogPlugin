@@ -30,6 +30,7 @@
     Click edit to select a post. 
   <?php endif ?>
 <?php else: ?>
+<div class="pk-blog-post <?php echo count($pk_blog_post->getAttachedMedia()) > 0? 'contains-media' : ''?> ">
 <h4><?php echo $pk_blog_post->getTitle() ?></h4>
 
 <?php if ($pk_blog_post->getAttachedMedia()): ?>
@@ -58,5 +59,5 @@
 	<?php echo ($pk_blog_post->getExcerpt()) ? $pk_blog_post->getExcerpt() : $pk_blog_post->getPreview(75) ?>
 	<span class="pk-blog-read-more"><?php echo link_to('Read More', 'pk_blog_post', $pk_blog_post, array('class' => 'pk-blog-more')) ?></span>
 </div>
-
+</div>
 <?php endif ?>
