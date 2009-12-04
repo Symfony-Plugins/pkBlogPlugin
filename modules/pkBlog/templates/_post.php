@@ -10,35 +10,33 @@
 		<li class="time"><?php echo date('g:iA', strtotime($pk_blog_post->getPublishedAt())) ?></li>		
 	</ul>
   <div class="pk-blog-post-body">
+			<?php if ($pk_blog_post->getAttachedMedia()): ?>
+				<?php if (in_array('pkContextCMSSlideshow', sfConfig::get('sf_enabled_modules'))): ?>
+					<div class="pk-blog-post-media">
+					  <?php include_component('pkContextCMSSlideshow', 'slideshow', array(
+							'items' => $pk_blog_post->getAttachedMedia(),
+							'id' => $pk_blog_post->getId(),
+							'options' => array('width' => 420, 'flexHeight' => true, 'resizeType' => 's')
+						)) ?>
+					</div>
+				<?php else: ?>
+				  <ul class="pk-blog-post-media pk-tubes-attached-media">
+				  <?php foreach ($pk_blog_post->getAttachedMedia() as $media): ?>
+				    <li><?php echo image_tag(str_replace(
+				      array("_WIDTH_", "_HEIGHT_", "_c-OR-s_", "_FORMAT_"),
+				      array('240', '180', 'c', 'jpg',),
+				      $media->image
+				    )) ?></li>
+				  <?php endforeach ?>
+				  </ul>
+			  <?php endif ?>
+			<?php endif ?>
 		<div class="pk-blog-post-excerpt">
 			<?php echo (isset($excerpt) && $pk_blog_post->getExcerpt()) ? $pk_blog_post->getExcerpt() : $pk_blog_post->getBody() ?>			
 			<?php if ((isset($excerpt) && $pk_blog_post->getExcerpt())): ?>
 				<span class="pk-blog-read-more"><?php echo link_to('Read More', 'pk_calendar_post', $pk_blog_post, array('class' => 'pk-blog-more')) ?></span>
 			<?php endif ?>		
 		</div>
-		
-  	<?php if ($pk_blog_post->getAttachedMedia()): ?>
-			<?php if (in_array('pkContextCMSSlideshow', sfConfig::get('sf_enabled_modules'))): ?>
-				<div class="pk-blog-post-media">
-				  <?php include_component('pkContextCMSSlideshow', 'slideshow', array(
-						'items' => $pk_blog_post->getAttachedMedia(),
-						'id' => $pk_blog_post->getId(),
-						'options' => array('width' => 240, 'flexHeight' => true, 'resizeType' => 's')
-					)) ?>
-				</div>
-			<?php else: ?>
-			  <ul class="pk-blog-post-media pk-tubes-attached-media">
-			  <?php foreach ($pk_blog_post->getAttachedMedia() as $media): ?>
-			    <li><?php echo image_tag(str_replace(
-			      array("_WIDTH_", "_HEIGHT_", "_c-OR-s_", "_FORMAT_"),
-			      array('240', '180', 'c', 'jpg',),
-			      $media->image
-			    )) ?></li>
-			  <?php endforeach ?>
-			  </ul>
-		  <?php endif ?>
-		<?php endif ?>
-
 	</div>
 	<ul class="pk-blog-post-tags">
 		<li class="title">Tagged: </li>
