@@ -6,8 +6,7 @@
   <?php endif ?>
   <h3 class="pk-blog-post-title"><?php echo link_to($pk_blog_post->getTitle(), 'pk_blog_post', $pk_blog_post) ?></h3>
 	<ul class="pk-blog-post-meta">
-		<li class="date"><?php echo date('j F Y', strtotime($pk_blog_post->getPublishedAt())) ?></li>
-		<li class="time"><?php echo date('g:iA', strtotime($pk_blog_post->getPublishedAt())) ?></li>		
+		<li class="date"><?php echo date('l F jS Y', strtotime($pk_blog_post->getPublishedAt())) ?></li>		
 	</ul>
   <div class="pk-blog-post-body">
 			<?php if ($pk_blog_post->getAttachedMedia()): ?>

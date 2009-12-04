@@ -27,7 +27,7 @@
 <?php // Look at $pk_blog_post, not $value; posts can be deleted ?>
 <?php if (!$pk_blog_post): ?>
   <?php if ($editable): ?>
-    Click edit to select a post. 
+    Click edit to select a post.
   <?php endif ?>
 <?php else: ?>
 <div class="pk-blog-post <?php echo count($pk_blog_post->getAttachedMedia()) > 0? 'contains-media' : ''?> ">
