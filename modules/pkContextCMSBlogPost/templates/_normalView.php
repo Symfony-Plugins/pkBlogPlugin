@@ -32,6 +32,10 @@
 <?php else: ?>
 <div class="pk-blog-post <?php echo count($pk_blog_post->getAttachedMedia()) > 0? 'contains-media' : ''?> ">
 <h4><?php echo $pk_blog_post->getTitle() ?></h4>
+<ul class="pk-blog-post-meta">
+	<li class="date"><?php echo date('j F Y', strtotime($pk_blog_post->getPublishedAt())) ?></li>
+	<li class="time"><?php echo date('g:iA', strtotime($pk_blog_post->getPublishedAt())) ?></li>		
+</ul>
 
 <?php if ($pk_blog_post->getAttachedMedia()): ?>
 	<?php if (in_array('pkContextCMSSlideshow', sfConfig::get('sf_enabled_modules'))): ?>
