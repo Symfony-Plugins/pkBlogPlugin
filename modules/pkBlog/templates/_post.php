@@ -1,6 +1,6 @@
 <?php use_helper('jQuery') ?>
 
-<div class="pk-blog-post">
+<div class="pk-blog-post <?php echo $pk_blog_post->getAttachedMedia()? 'contains-media': '';?>">
   <?php if ($pk_blog_post->userHasPrivilege('edit')): ?>
     <?php echo link_to('Edit This Post', 'pk_blog_post_admin_edit', $pk_blog_post, array('class' => 'pk-btn icon pk-blog')) ?>
   <?php endif ?>
