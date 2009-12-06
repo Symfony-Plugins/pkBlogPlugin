@@ -36,13 +36,43 @@ abstract class PluginpkBlogEventForm extends BasepkBlogEventForm
     
     $this->widgetSchema['category_id']->setLabel('Category');
     
-    $this->widgetSchema['start_date'] = new sfWidgetFormJQueryDate();
-    $this->widgetSchema['end_date'] = new sfWidgetFormJQueryDate();
+    $this->validatorSchema['start_date'] = new sfValidatorDateTime(array(
+      'required' => true,
+    ));
+
+    $this->validatorSchema['end_date'] = new sfValidatorDateTime(array(
+      'required' => true,
+    ));
+    
+    $this->widgetSchema['start_date'] = new sfWidgetFormJQueryDate(array(
+      'image' => '/pkContextCMSPlugin/images/pk-icon-datepicker.png', 
+      'config' => '{}',
+    ));
+
+    $this->widgetSchema['start_time'] = new sfWidgetFormJQueryTime(array(
+      'image' => '/pkContextCMSPlugin/images/pk-icon-timepicker.png', 
+      'config' => '{}',
+    ));
+  
+    $this->widgetSchema['end_date'] = new sfWidgetFormJQueryDate(array(
+      'image' => '/pkContextCMSPlugin/images/pk-icon-datepicker.png',
+      'config' => '{}',
+    )); 
+
+    $this->widgetSchema['end_time'] = new sfWidgetFormJQueryTime(array(
+      'image' => '/pkContextCMSPlugin/images/pk-icon-timepicker.png', 
+      'config' => '{}',
+    ));
     
     $this->widgetSchema['tags'] = new sfWidgetFormInput(array('default' => implode(', ', $this->getObject()->getTags())), array('class' => 'tag-input', 'autocomplete' => 'off'));
 		$this->validatorSchema['tags'] = new sfValidatorString(array('required' => false));
+    sfContext::getInstance()->getConfiguration()->loadHelpers('jQuery');
+    $r = sfContext::getInstance()->getResponse();
+    $r->addStylesheet(sfConfig::get('sf_jquery_web_dir').'/css/JqueryAutocomplete');
+    jq_add_plugins_by_name(array('ui'));
+    jq_add_plugins_by_name(array("autocomplete"));
   }
-
+  
 	public function doSave($con = null)
 	{
 	  $tags = $this->values['tags'];

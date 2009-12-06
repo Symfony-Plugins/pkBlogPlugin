@@ -78,9 +78,13 @@ pkBlogEvent:
     keyValue: 'event'
   columns:
     start_date:
-      type: timestamp
+      type: date
+    start_time:
+      type: time
     end_date:
-      type: timestamp
+      type: date
+    end_time:
+      type: time
   relations:
     Author:
       class: sfGuardUser
