@@ -31,7 +31,7 @@
   <?php endif ?>
 <?php else: ?>
 <div class="pk-blog-post <?php echo count($pk_blog_post->getAttachedMedia()) > 0? 'contains-media' : ''?> ">
-<h4><?php echo $pk_blog_post->getTitle() ?></h4>
+<h4 class="pk-blog-post-title"><?php echo $pk_blog_post->getTitle() ?></h4>
 <ul class="pk-blog-post-meta">
 	<li class="date"><?php echo date('l F jS Y', strtotime($pk_blog_post->getPublishedAt())) ?></li>
 </ul>
