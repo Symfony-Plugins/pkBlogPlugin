@@ -14,23 +14,6 @@ generator:
       actions: 
         _new:
           label: Create New Post
-      fields:
-        author_id:
-          help: Specify the author of your post. Admins are permitted to specify the author of a post. Editors are only permitted to publish as themselves.
-        title:
-          help: Specify the title of your post.
-        body:
-          help: Use the rich text editor to format the body of your post.
-        excerpt:
-          help: Specify an excerpt from the body of your post. The excerpt will be displayed in the paginated blog archive and wherever a blog post slot is added.
-        category_id:
-          help: 'Specify a category for your post. Categories are hierarchical, you may only specify one.'
-        tags:
-          help: 'Add any relevant tags to your post, separated by commas. Select recommended tags to prevent creating duplicates.'
-        published:
-          help: Specify whether your post should go live or remain a draft.
-        published_at:
-          help: 'Specify a published date. You can back-date posts, or set them to be published in the future.'
       list:
         title: Blog Posts
         display: [_post, author, category, _media]
@@ -48,6 +31,24 @@ generator:
       filter:  ~
       form:
         display: [author_id, title, body, excerpt, category_id, published, published_at, tags, ~tagList]
+        fields:
+          author_id:
+            help: Specify the author of your post. Admins are permitted to specify the author of a post. Editors are only permitted to publish as themselves.
+          title:
+            help: Specify the title of your post.
+          body:
+            help: Use the rich text editor to format the body of your post.
+          excerpt:
+            help: Specify an excerpt from the body of your post. The excerpt will be displayed in the paginated blog archive and wherever a blog post slot is added.
+          category_id:
+            help: 'Specify a category for your post. Categories are hierarchical, you may only specify one.'
+          tags:
+            help: 'Add any relevant tags to your post, separated by commas. Select recommended tags to prevent creating duplicates.'
+          published:
+            help: Specify whether your post should go live or remain a draft.
+          published_at:
+            help: 'Specify a published date. You can back-date posts, or set them to be published in the future.'
+
       edit:
         title: Editing Post - "%%title%%"
         actions:
