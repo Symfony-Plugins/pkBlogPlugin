@@ -6,7 +6,9 @@
   <?php endif ?>
   <h3 class="pk-blog-post-title"><?php echo link_to($pk_blog_event->getTitle(), 'pk_calendar_post', $pk_blog_event) ?></h3>
 	<ul class="pk-blog-post-meta">
-		<li class="date"><?php echo date('l F jS Y', strtotime($pk_blog_event->getPublishedAt())) ?></li>
+		<li class="pk-calendar-date"><?php echo date('l', strtotime($pk_blog_event->getStartDate())) ?></li>
+		<li><?php echo date('F jS Y', strtotime($pk_blog_event->getStartDate())) ?></li>
+		<li><?php echo date('g:iA', strtotime($pk_blog_event->getStartTime())) ?> - <?php echo date('g:iA', strtotime($pk_blog_event->getEndTime())) ?></li>
 	</ul>
   <div class="pk-blog-post-body">
 		<div class="pk-blog-post-excerpt">

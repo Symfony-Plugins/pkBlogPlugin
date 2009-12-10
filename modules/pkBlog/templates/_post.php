@@ -33,7 +33,7 @@
 		<div class="pk-blog-post-excerpt">
 			<?php echo (isset($excerpt) && $pk_blog_post->getExcerpt()) ? $pk_blog_post->getExcerpt() : $pk_blog_post->getBody() ?>			
 			<?php if ((isset($excerpt) && $pk_blog_post->getExcerpt())): ?>
-				<span class="pk-blog-read-more"><?php echo link_to('Read More', 'pk_calendar_post', $pk_blog_post, array('class' => 'pk-blog-more')) ?></span>
+				<span class="pk-blog-read-more"><?php echo link_to('Read More', 'pk_blog_post', $pk_blog_post, array('class' => 'pk-blog-more')) ?></span>
 			<?php endif ?>		
 		</div>
 	</div>
