@@ -30,8 +30,7 @@
     Click edit to select a event. 
   <?php endif ?>
 <?php else: ?>
-<h4><?php echo $pk_blog_event->getTitle() ?></h4>
-
+<h3 class="pk-blog-post-title"><?php echo link_to($pk_blog_event->getTitle(), 'pk_calendar_post', $pk_blog_event) ?></h3>
 <?php if ($pk_blog_event->getAttachedMedia()): ?>
 	<?php if (in_array('pkContextCMSSlideshow', sfConfig::get('sf_enabled_modules'))): ?>
 		<div class="pk-blog-event-media">
