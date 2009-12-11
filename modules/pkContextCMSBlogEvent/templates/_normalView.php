@@ -37,7 +37,7 @@
 			<?php include_component('pkContextCMSSlideshow', 'slideshow', array(
 				'items' => $pk_blog_event->getAttachedMedia(),
 				'id' => $pk_blog_event->getId(),
-				'options' => array('width' => 120, 'height' => 90, 'resizeType' => 'c', 'arrows' => false )
+				'options' => array('width' => 150, 'height' => 110, 'resizeType' => 'c', 'arrows' => false )
 			)) ?>
 		</div>
 	<?php else: ?>
