@@ -59,7 +59,7 @@
 <?php endif ?>
 
 <div class="pk-blog-post-excerpt-container">
-	<?php echo ($pk_blog_post->getExcerpt()) ? $pk_blog_post->getExcerpt() : $pk_blog_post->getPreview(75) ?>
+	<?php echo ($pk_blog_post->getExcerpt()) ? $pk_blog_post->getExcerpt() : $pk_blog_post->getPreview(30) ?>
 	<span class="pk-blog-read-more"><?php echo link_to('Read More', 'pk_blog_post', $pk_blog_post, array('class' => 'pk-blog-more')) ?></span>
 </div>
 </div>
