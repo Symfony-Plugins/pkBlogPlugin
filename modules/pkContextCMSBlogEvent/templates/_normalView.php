@@ -54,8 +54,16 @@
 <?php endif ?>
 
 <div class="pk-blog-event-excerpt-container">
-	<?php echo ($pk_blog_event->getExcerpt()) ? $pk_blog_event->getExcerpt() : $pk_blog_event->getPreview(75) ?>
-	<span class="pk-blog-read-more"><?php echo link_to('Read More', 'pk_calendar_post', $pk_blog_event, array('class' => 'pk-blog-more')) ?></span>
+	<?php 
+	if (str_word_count($pk_blog_event->getBody())>30) 
+		{
+			echo ($pk_blog_event->getExcerpt()) ? $pk_blog_post->getExcerpt() : $pk_blog_post->getPreview(30);
+			echo ("<span class='pk-blog-read-more'>");
+			echo link_to('Read More', 'pk_celendar_post', $pk_blog_event, array('class' => 'pk-blog-more'));
+			echo ("</span>");
+		}
+	else 	echo ($pk_blog_event->getBody());
+		?>
 </div>
 
 <?php endif ?>
