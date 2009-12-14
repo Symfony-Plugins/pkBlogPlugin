@@ -4,7 +4,7 @@
   <?php if ($pk_blog_post->userHasPrivilege('edit')): ?>
     <?php echo link_to('Edit This Post', 'pk_blog_post_admin_edit', $pk_blog_post, array('class' => 'pk-btn icon pk-blog')) ?>
   <?php endif ?>
-  <h3 class="pk-blog-post-title"><?php echo link_to($pk_blog_post->getTitle(), pkContextCMSTools::getCurrentPage()->getUrl().'?p='.$pk_blog_post->getSlug()) ?></h3>
+	<h3 class="pk-blog-post-title"><?php echo link_to($pk_blog_post->getTitle(), 'pk_blog_post', $pk_blog_post) ?></h3>
 	<ul class="pk-blog-post-meta">
 		<li class="date"><?php echo date('l F jS Y', strtotime($pk_blog_post->getPublishedAt())) ?></li>		
 	</ul>
