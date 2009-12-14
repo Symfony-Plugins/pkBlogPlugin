@@ -17,6 +17,7 @@ abstract class BasepkCalendarComponents extends sfComponents
     $q = Doctrine::getTable('pkBlogEvent')
       ->createQuery('p')
       ->addWhere('p.published = ?', true)
+      ->addWhere('p.start_date > ?', date('Y-m-d'))
       ->orderBy('p.start_date, p.start_time')
       ->limit($limit);
     
