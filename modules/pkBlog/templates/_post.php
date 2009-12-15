@@ -15,7 +15,8 @@
 					  <?php include_component('pkContextCMSSlideshow', 'slideshow', array(
 							'items' => $pk_blog_post->getAttachedMedia(),
 							'id' => $pk_blog_post->getId(),
-							'options' => array('width' => 420, 'flexHeight' => true, 'resizeType' => 's')
+							'options' => array('width' => 420, 'height' => 300, 'resizeType' => 'c'),
+							'constraints' => array('minimum-width' => 420,'minimum-height' => 300 )
 						)) ?>
 					</div>
 				<?php else: ?>
@@ -37,10 +38,13 @@
 			<?php endif ?>		
 		</div>
 	</div>
+	
+	<?php if ($pk_blog_post->getTags()): ?>
 	<ul class="pk-blog-post-tags">
 		<li class="title">Tagged: </li>
 		<li class="tag"><?php $n=1; foreach ($pk_blog_post->getTags() as $tag): ?>
 			<?php echo link_to($tag, 'pkBlog/index?tag='.$tag) ?><?php if ($n < count($pk_blog_post->getTags())): ?>, <?php endif ?>
 	  <?php $n++; endforeach ?></li>
 	</ul>
+	<?php endif ?>
 </div>

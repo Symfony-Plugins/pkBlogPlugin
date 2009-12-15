@@ -24,7 +24,8 @@
 				  <?php include_component('pkContextCMSSlideshow', 'slideshow', array(
 						'items' => $pk_blog_event->getAttachedMedia(),
 						'id' => $pk_blog_event->getId(),
-						'options' => array('width' => 240, 'flexHeight' => true, 'resizeType' => 's')
+						'options' => array('width' => 420, 'height' => 300, 'resizeType' => 'c'),
+						'constraints' => array('minimum-width' => 420,'minimum-height' => 300 )
 					)) ?>
 				</div>
 			<?php else: ?>
@@ -41,10 +42,12 @@
 		<?php endif ?>
 
 	</div>
+	<?php if ($pk_blog_event->getTags()): ?>
 	<ul class="pk-blog-post-tags">
 		<li class="title">Tagged: </li>
 		<li class="tag"><?php $n=1; foreach ($pk_blog_event->getTags() as $tag): ?>
 			<?php echo link_to($tag, 'pkCalendar/index?tag='.$tag) ?><?php if ($n < count($pk_blog_event->getTags())): ?>, <?php endif ?>
 	  <?php $n++; endforeach ?></li>
 	</ul>
+	<?php endif ?>
 </div>
