@@ -57,7 +57,8 @@ abstract class BasepkContextCMSCalendarComponents extends pkContextCMSBaseCompon
 			$this->calendar->addEvent($event->getStartDate(), array(
 				'event' => true,
 				'title' => $event->getTitle(), 
-				'start_date' => $event->getStartDate(), 
+				'start_date' => $event->getStartDateTime(), 
+				'permalink' => $event->getPermalink(), 
 			));
 		}
 

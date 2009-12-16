@@ -75,7 +75,7 @@
 						<li class="day-event-details">
 							<ul>
 								<li class="day-event-details-date"><?php echo date('g:ia' , strtotime($event['start_date'])) ?></li>
-								<li class="day-event-details-title"><?php echo $event['title'] ?></li>
+								<li class="day-event-details-title"><?php echo link_to($event['title'], $event['permalink']) ?></li>
 							</ul>
 						</li>
 					<?php endforeach ?>
