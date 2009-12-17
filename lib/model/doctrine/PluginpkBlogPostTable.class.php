@@ -4,39 +4,26 @@
  */
 class PluginpkBlogPostTable extends Doctrine_Table
 {
-  public function buildQuery(sfWebRequest $request)
+  public function buildQuery(sfWebRequest $request, $tableName = 'pkBlogPost')
+  {    
+    return Doctrine::getTable('pkBlogItem')->buildQuery($request, $tableName);
+  }
+  
+  public function addDateRangeQuery(sfWebRequest $request, Doctrine_Query $q = null)
   {
-    if ($request->getParameter('tag'))
+    if (!$q)
     {
-      $q = PluginTagTable::getObjectTaggedWithQuery('pkBlogPost', $request->getParameter('tag'), null, array('nb_common_tag' => 1));
-    }
-    else
-    {
-      $q = Doctrine_Query::create()->from('pkBlogPost a');
-    }
-    
-    if ($request->getParameter('search'))
-    {
-      $q = Doctrine::getTable('pkBlogPost')->addSearchQuery($q, $request->getParameter('search'));
+      $q = $this->createQuery('p');
     }
     
     $rootAlias = $q->getRootAlias();
-    
+
     // if it's an RSS feed, we don't want to be concerned with a time frame, just give us the latest stuff
     if ($request->getParameter('format') != 'rss')
     {
       $q->addWhere($rootAlias.'.published_at > ?', $request->getParameter('year', date('Y')).'-'.$request->getParameter('month', 1).'-'.$request->getParameter('day', 1).' 0:00:00')
         ->addWhere($rootAlias.'.published_at < ?', $request->getParameter('year', date('Y')).'-'.$request->getParameter('month', 12).'-'.$request->getParameter('day', 31).' 23:59:59');
     }
-    
-    if ($request->getParameter('cat'))
-    {
-      $q->innerJoin($rootAlias.'.Category c WITH c.slug = ? ', $request->getParameter('cat'));
-    }
-    
-    $q->addWhere($q->getRootAlias().'.published = ?', true);
-
-    $q->orderBy($rootAlias.'.published_at desc');
     
     return $q;
   }

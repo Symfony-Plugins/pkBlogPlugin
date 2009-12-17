@@ -25,6 +25,10 @@
   <?php foreach ($pk_blog_events->getResults() as $pk_blog_event): ?>
   <?php echo include_partial('pkCalendar/event', array('pk_blog_event' => $pk_blog_event, 'excerpt' => 'true')); ?>
   <?php endforeach ?>
+  
+  <?php if (!count($pk_blog_events->getResults())): ?>
+  <?php include_partial('pkCalendar/noresults') ?>
+  <?php endif ?>
   </div>
 
   <?php if ($pk_blog_events->haveToPaginate()): ?>

@@ -220,14 +220,14 @@ pk_calendar_cat:
   param: { module: pkCalendar, action: index }
   class: pkContextCMSRoute
 
-pk_calendar:
-  url:   
-  param: { module: pkCalendar, action: index }
-  class: pkContextCMSRoute
-
 pk_calendar_today:
   url:   
   param: { module: pkCalendar, action: today }
+  class: pkContextCMSRoute
+
+pk_calendar:
+  url:   
+  param: { module: pkCalendar, action: index }
   class: pkContextCMSRoute
 
 ################
