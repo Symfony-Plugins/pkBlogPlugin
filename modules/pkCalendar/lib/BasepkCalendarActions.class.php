@@ -10,6 +10,20 @@
  */
 abstract class BasepkCalendarActions extends pkBlogPluginEngineActions
 {
+   public function executeUpcoming(sfWebRequest $request)
+   {
+     $this->buildParams();
+
+     $pager = new sfDoctrinePager('pkBlogEvent', sfConfig::get('app_pkCalendar_max_per_page', 10));
+     $pager->setQuery(Doctrine::getTable('pkBlogEvent')->addUpcomingEventsQuery());
+     $pager->setPage($this->getRequestParameter('page', 1));
+     $pager->init();
+
+     $this->pk_blog_events = $pager;
+     
+     $this->setTemplate('index');
+   }
+
    public function executeIndex(sfWebRequest $request)
    {
      $this->buildParams();

@@ -222,7 +222,7 @@ pk_calendar_cat:
 
 pk_calendar_today:
   url:   
-  param: { module: pkCalendar, action: today }
+  param: { module: pkCalendar, action: upcoming }
   class: pkContextCMSRoute
 
 pk_calendar:

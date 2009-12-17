@@ -15,10 +15,7 @@ abstract class BasepkCalendarComponents extends sfComponents
     $limit = ($this->limit) ? $this->limit : 5;
     
     $q = Doctrine::getTable('pkBlogEvent')
-      ->createQuery('p')
-      ->addWhere('p.published = ?', true)
-      ->addWhere('p.start_date > ?', date('Y-m-d'))
-      ->orderBy('p.start_date, p.start_time')
+      ->addUpcomingEventsQuery()
       ->limit($limit);
     
     $this->pk_blog_events = $q->execute();
