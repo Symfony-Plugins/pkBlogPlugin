@@ -32,7 +32,7 @@ abstract class PluginpkBlogPostForm extends BasepkBlogPostForm
     $this->setDefault('author_id', $user->getGuardUser()->getId());
 
     $this->widgetSchema['excerpt']    = new sfWidgetFormRichTextarea(array('editor' => 'fck', 'height' => '200', 'width' => '600',  ));
-		$this->validatorSchema['excerpt'] = new sfValidatorHtml(array('max_length' => 2147483647, 'required' => false));
+		$this->validatorSchema['excerpt'] = new sfValidatorHtml(array('required' => false));
 
 	  $this->widgetSchema['body']       = new sfWidgetFormRichTextarea(array('editor' => 'fck', 'height' => '400', 'width' => '600',  ));
 		$this->validatorSchema['body']    = new sfValidatorHtml(array('required' => false));

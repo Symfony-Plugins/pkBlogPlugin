@@ -66,6 +66,8 @@ abstract class PluginpkBlogEventForm extends BasepkBlogEventForm
     
     $this->widgetSchema['tags'] = new sfWidgetFormInput(array('default' => implode(', ', $this->getObject()->getTags())), array('class' => 'tag-input', 'autocomplete' => 'off'));
 		$this->validatorSchema['tags'] = new sfValidatorString(array('required' => false));
+		$this->validatorSchema['body'] = new sfValidatorHtml(array('required' => false));
+		$this->validatorSchema['excerpt'] = new sfValidatorHtml(array('required' => false));
     sfContext::getInstance()->getConfiguration()->loadHelpers('jQuery');
     $r = sfContext::getInstance()->getResponse();
     $r->addStylesheet(sfConfig::get('sf_jquery_web_dir').'/css/JqueryAutocomplete');
