@@ -16,4 +16,19 @@ abstract class PluginpkBlogEvent extends BasepkBlogEvent
   {
     return strtotime($this->getStartDate() .' '. $this->getStartTime());
   }
+  
+  public function getYear()
+  {
+    return date('Y', strtotime($this->getStartDate()));
+  }
+
+  public function getMonth()
+  {
+    return date('m', strtotime($this->getStartDate()));
+  }
+
+  public function getDay()
+  {
+    return date('d', strtotime($this->getStartDate()));
+  }
 }
