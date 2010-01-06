@@ -1,6 +1,8 @@
-<?php use_helper('Form') ?>
-
-<?php echo select_tag("tags-$id", options_for_select($tags, $selected_tags), array_merge($options, array('multiple' => true))) ?>
+<select name="tags-<?php echo $id ?>[]" id="tags-<?php echo $id ?>" multiple="multiple">
+  <?php foreach($tags as $key => $tag): ?>
+  <option value="<?php echo $key ?>"><?php echo $tag ?></option> 
+  <?php endforeach ?>
+</select>
 
 <script type="text/javascript" charset="utf-8">
 	pkMultipleSelect('#pk-slot-form-<?php echo $id ?>', { });
