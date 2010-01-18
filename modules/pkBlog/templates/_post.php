@@ -7,11 +7,11 @@
 	<ul class="pk-blog-post-meta">
 		<li class="date"><?php echo date('l F jS Y', strtotime($pk_blog_post->getPublishedAt())) ?></li>
 		<li class="author">Posted By: <?php echo $pk_blog_post->getAuthor() ?></li>
-		<li class="edit">
 		<?php if ($pk_blog_post->userHasPrivilege('edit')): ?>
+		<li class="edit">
 	    <?php echo link_to('Edit Post', 'pk_blog_post_admin_edit', $pk_blog_post, array('class' => 'pk-btn icon pk-blog pk-edit-post')) ?>
-	  <?php endif ?>		
 	  </li>
+	  <?php endif ?>		
 	</ul>
   <div class="pk-blog-post-body">
 			<?php if ($pk_blog_post->getAttachedMedia()): ?>
