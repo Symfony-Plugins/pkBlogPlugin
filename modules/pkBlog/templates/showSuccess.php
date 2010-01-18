@@ -8,6 +8,6 @@
 	<div id="pk-subnav-bottom" class="pk-subnav-bottom"></div>
 </div>
 
-<div class="pk-blog-main">
+<div id="pk-blog-main" class="pk-blog-main">
   <?php echo include_partial('pkBlog/post', array('pk_blog_post' => $pk_blog_post)); ?>
 </div>
