@@ -21,10 +21,11 @@ class PluginpkBlogPostTable extends Doctrine_Table
     // if it's an RSS feed, we don't want to be concerned with a time frame, just give us the latest stuff
     if ($request->getParameter('format') != 'rss')
     {
-      $q->addWhere($rootAlias.'.published_at > ?', $request->getParameter('year', date('Y')).'-'.$request->getParameter('month', 1).'-'.$request->getParameter('day', 1).' 0:00:00')
-        ->addWhere($rootAlias.'.published_at < ?', $request->getParameter('year', date('Y')).'-'.$request->getParameter('month', 12).'-'.$request->getParameter('day', 31).' 23:59:59');
+      $q->addWhere($rootAlias.'.published_at > ? and '.$rootAlias.'.published_at < ?', array( 
+        $request->getParameter('year', 0).'-'.$request->getParameter('month', 1).'-'.$request->getParameter('day', 1).' 0:00:00',
+        $request->getParameter('year', date('Y')).'-'.$request->getParameter('month', 12).'-'.$request->getParameter('day', 31).' 23:59:59'
+      ));
     }
-    
     return $q;
   }
   

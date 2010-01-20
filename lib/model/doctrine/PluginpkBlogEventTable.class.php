@@ -4,9 +4,43 @@
  */
 class PluginpkBlogEventTable extends pkBlogItemTable
 {
+    /**
+   * Builds the query for blog posts and events based on the request parameters.
+   * 
+   * @param Doctrine_Query $q
+   * @param string $tableName This is going to be either pkBlogPost or pkBlogEvent
+   * @return Doctrrin_Query $q
+   */
   public function buildQuery(sfWebRequest $request, $tableName = 'pkBlogEvent')
-  {    
-    return Doctrine::getTable('pkBlogItem')->buildQuery($request, $tableName);
+  {
+    if ($request->getParameter('tag'))
+    {
+      $q = PluginTagTable::getObjectTaggedWithQuery($tableName, $request->getParameter('tag'), null, array('nb_common_tag' => 1));
+    }
+    else
+    {
+      $q = Doctrine_Query::create()->from($tableName.' a');
+    }
+    
+    if ($request->getParameter('search'))
+    {
+      $q = Doctrine::getTable($tableName)->addSearchQuery($q, $request->getParameter('search'));
+    }
+        
+    $q = Doctrine::getTable($tableName)->addDateRangeQuery($request, $q);
+        
+    $rootAlias = $q->getRootAlias();
+
+    if ($request->getParameter('cat'))
+    {
+      $q->innerJoin($rootAlias.'.Category c WITH c.slug = ? ', $request->getParameter('cat'));
+    }
+    
+    $q->addWhere($q->getRootAlias().'.published = ?', true);
+
+    $q->orderBy($rootAlias.'.start_date asc');
+    
+    return $q;
   }
   
   public function addDateRangeQuery(sfWebRequest $request, Doctrine_Query $q = null)
