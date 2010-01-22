@@ -9,7 +9,7 @@
 		<li class="author">Posted By: <?php echo $pk_blog_post->getAuthor() ?></li>
 		<?php if ($pk_blog_post->userHasPrivilege('edit')): ?>
 		<li class="edit">
-	    <?php echo link_to('Edit Post', 'pk_blog_post_admin_edit', $pk_blog_post, array('class' => 'pk-btn icon pk-blog pk-edit-post')) ?>
+	    <?php echo link_to('Edit Post', 'pk_blog_post_admin_edit', $pk_blog_post, array('class' => 'pk-btn icon pk-blog-btn pk-edit-post')) ?>
 	  </li>
 	  <?php endif ?>		
 	</ul>

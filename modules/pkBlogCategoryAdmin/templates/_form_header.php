@@ -1,1 +1,1 @@
-<?php echo link_to('Edit Categories', '@pk_blog_category_admin', array('class' => 'pk-btn icon pk-blog', )) ?>
+<?php echo link_to('Edit Categories', '@pk_blog_category_admin', array('class' => 'pk-btn icon pk-blog-btn', )) ?>
