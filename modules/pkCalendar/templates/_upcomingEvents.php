@@ -4,8 +4,7 @@
     <div class="pk-calendar-event">
       <div class="pk-calendar-meta">
         <ul>
-          <li class="pk-calendar-date"><?php echo date('l', strtotime($pk_blog_event->getStartDate())) ?></li>
-          <li><?php echo date('F jS Y', strtotime($pk_blog_event->getStartDate())) ?></li>
+	        <li class="pk-calendar-date"><?php echo date('l, F jS Y', strtotime($pk_blog_event->getStartDate())) ?></li>
           <?php if($pk_blog_event->getStartTime()): ?>
           <li><?php echo date('g:iA', strtotime($pk_blog_event->getStartTime())) ?> 
           <?php if($pk_blog_event->getEndTime()): ?>- <?php echo date('g:iA', strtotime($pk_blog_event->getEndTime())) ?></li>
