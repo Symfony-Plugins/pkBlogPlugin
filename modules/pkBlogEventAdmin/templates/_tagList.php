@@ -15,12 +15,12 @@ $(document).ready(function(){
 	var	tagList = $('#pk_blog_event_tags').attr('value');
 	console.log(tagList);
 	var recommendedTag = $('.recommended-tag');
-			
+
 	recommendedTag.click(function(){
-	
+
 	tagList = $('#pk_blog_event_tags').attr('value');
 	theTag = $(this).text();
-	
+
 		if (!$(this).hasClass('selected'))
 		{ //Only add it if it hasn't been added already
 			tagList += ", "+theTag;
