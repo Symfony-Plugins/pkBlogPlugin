@@ -12,18 +12,19 @@
 
 $(document).ready(function(){
 
-	var tagList;
+	var	tagList = $('#pk_blog_event_tags').attr('value');
+	console.log(tagList);
 	var recommendedTag = $('.recommended-tag');
 			
 	recommendedTag.click(function(){
 	
-	tagList = $('#pk_blog_post_tags').attr('value');
+	tagList = $('#pk_blog_event_tags').attr('value');
 	theTag = $(this).text();
 	
 		if (!$(this).hasClass('selected'))
 		{ //Only add it if it hasn't been added already
 			tagList += ", "+theTag;
-			$('#pk_blog_post_tags').attr('value',tagList);
+			$('#pk_blog_event_tags').attr('value',tagList);
 		}
 		else
 		{
@@ -36,7 +37,7 @@ $(document).ready(function(){
 			}
 
 			newTagList.splice(tagPosition,1);
-			$('#pk_blog_post_tags').attr('value',newTagList.toString());
+			$('#pk_blog_event_tags').attr('value',newTagList.toString());
 		}
 		
 		$(this).toggleClass('selected');
