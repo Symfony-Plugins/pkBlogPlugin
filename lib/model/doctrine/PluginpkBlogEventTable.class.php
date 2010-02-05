@@ -52,8 +52,8 @@ class PluginpkBlogEventTable extends pkBlogItemTable
 
     $rootAlias = $q->getRootAlias();
 
-    $q->addWhere($rootAlias.'.start_date > ?', $request->getParameter('year', date('Y')).'-'.$request->getParameter('month', 1).'-'.$request->getParameter('day', 1).' 0:00:00')
-      ->addWhere($rootAlias.'.start_date < ?', $request->getParameter('year', date('Y')).'-'.$request->getParameter('month', 12).'-'.$request->getParameter('day', 31).' 23:59:59');
+    $q->addWhere($rootAlias.'.start_date >= ?', $request->getParameter('year', date('Y')).'-'.$request->getParameter('month', 1).'-'.$request->getParameter('day', 1).' 0:00:00')
+      ->addWhere($rootAlias.'.start_date <= ?', $request->getParameter('year', date('Y')).'-'.$request->getParameter('month', 12).'-'.$request->getParameter('day', 31).' 23:59:59');
     
     return $q;
   }
