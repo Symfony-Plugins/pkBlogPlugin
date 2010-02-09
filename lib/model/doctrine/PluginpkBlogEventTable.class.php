@@ -68,7 +68,7 @@ class PluginpkBlogEventTable extends pkBlogItemTable
     $rootAlias = $q->getRootAlias();
     
     $q->addWhere($rootAlias.'.published = ?', true)
-      ->addWhere($rootAlias.'.start_date > ?', date('Y-m-d'))
+      ->addWhere($rootAlias.'.start_date >= ?', date('Y-m-d'))
       ->orderBy($rootAlias.'.start_date, '. $rootAlias .'.start_time');
     
     return $q;
